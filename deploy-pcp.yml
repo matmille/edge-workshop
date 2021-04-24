@@ -1,0 +1,48 @@
+---
+- hosts: edge
+  name: Install the Performance Monitoring Tools
+  become: yes
+  gather_facts: true
+
+  tasks:
+  - name: install Performance Copilot (PCP)
+    yum:
+      name: pcp
+      state: present
+
+  - name: install PCP tools
+    package:
+      name: pcp-system-tools
+      state: present
+
+  - name:  install Performance Metrics Domain Agent for podman
+    package:
+      name: pcp-pmda-podman
+      state: latest
+
+  - name: Configure PCP daemon to listen on default IP
+    lineinfile:
+      path: /etc/pcp/pmcd/pmcd.options
+      line: "-i {{ ansible_default_ipv4.address }}"
+
+  - name: Enable PCP services
+    service:
+      name: "{{ item }}"
+      state: started
+      enabled: yes
+    loop:
+      - pmcd.service
+      - pmlogger.service
+
+  - name: Open PCP service port in the firewall config
+    firewalld:
+      port: 44321/tcp
+      permanent: yes
+      state: enabled
+
+  - name: Apply firewalld changes by reloading
+    service:
+      name: firewalld
+      state: reloaded
+      enabled: yes
+
