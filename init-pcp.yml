@@ -34,15 +34,5 @@
       - pmcd.service
       - pmlogger.service
 
-  - name: Open PCP service port in the firewall config
-    firewalld:
-      port: 44321/tcp
-      permanent: yes
-      state: enabled
 
-  - name: Apply firewalld changes by reloading
-    service:
-      name: firewalld
-      state: reloaded
-      enabled: yes
 
