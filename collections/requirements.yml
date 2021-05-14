@@ -1,7 +1,3 @@
 ---
 collections:
-- ansible.posix
-- awx.awx
-- community.general
 - containers.podman
-- kubernetes.core
