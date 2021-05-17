@@ -2,6 +2,7 @@
 - hosts: edge
   name: Stage edge workload
   gather_facts: true
+  become: yes
   vars:
      userid: 0
      domain: rhnaps.io
