@@ -8,11 +8,12 @@
      prefix: example
 
   tasks:
+
   - name: Log into OpenShift registry (get temporary token)
     containers.podman.podman_login:
       authfile: "/root/auth.json"
-      registry: "registry-openshift-image-registry.apps.{{ prefix }}.{{ domain }}"
-      tlsverify: "no"
+      registry: "https://registry-openshift-image-registry.apps.{{ prefix }}.{{ domain }}"
+      tlsverify: no
       username: "user{{ userid }}"
       password: "{{ token }}"
 
