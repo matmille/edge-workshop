@@ -3,7 +3,6 @@
   name: Stage edge workload
   gather_facts: true
   become: yes
-  nolog: true
   vars:
      userid: 0
      domain: rhnaps.io
