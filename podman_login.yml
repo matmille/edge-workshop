@@ -14,5 +14,5 @@
       tlsverify: no
       username: "user{{ userid }}"
       password: "{{ token }}"
-      authfile: /root/auth.json
+      authfile: "/root/auth.json"
 
