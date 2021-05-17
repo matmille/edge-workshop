@@ -1,0 +1,18 @@
+---
+- hosts: all
+  name: Check release of edge containter
+  connection: local
+  gather_facts: false
+
+  vars:
+    look_for_release: url_of_your_endpoint
+
+  tasks:
+  - name: Query release from staging pod
+    uri:
+      url: "{{ look_for_release }}"
+      return_content: yes
+    register: body
+
+  - debug:
+      msg: "{{ body.content | regex_search('Release [1-9]+') }}"
