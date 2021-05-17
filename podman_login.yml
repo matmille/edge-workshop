@@ -9,6 +9,10 @@
      prefix: example
 
   tasks:
+  - name: Podman stores login in ${XDG_RUNTIME_DIR}/containers/auth.json.  Ensure env is set
+    debug: 
+      msg: "'{{ lookup('env', 'XDG_RUNTIME_DIR') }}' is the XDG_RUNTIME_DIR environment variable."
+
   - name: Log into OpenShift registry (get temporary token)
     containers.podman.podman_login:
       registry: registry-openshift-image-registry.apps.{{ prefix }}.{{ domain }}
