@@ -17,4 +17,6 @@
       tlsverify: no
       username: "user{{ userid }}"
       password: "{{ token }}"
+    environment:
+      REGISTRY_AUTH_FILE: "/root/auth.json"
 
