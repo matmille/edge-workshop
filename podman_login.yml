@@ -13,6 +13,6 @@
     containers.podman.podman_login:
       registry: registry-openshift-image-registry.apps.{{ prefix }}.{{ domain }}
       tlsverify: no
-      username: "{{ username }}"
+      username: "user{{ userid }}"
       password: "{{ token }}"
 
