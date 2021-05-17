@@ -12,7 +12,6 @@
 
   - name: Log into OpenShift registry (get temporary token)
     containers.podman.podman_login:
-      authfile: '/tmp'
       registry: "https://registry-openshift-image-registry.apps.{{ prefix }}.{{ domain }}"
       tlsverify: no
       username: "user{{ userid }}"
