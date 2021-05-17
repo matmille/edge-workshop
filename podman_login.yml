@@ -1,7 +1,6 @@
 ---
 - hosts: edge
   name: Stage edge workload
-  become: yes
   gather_facts: true
   vars:
      userid: 0
